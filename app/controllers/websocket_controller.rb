@@ -3,11 +3,11 @@ class WebsocketController < ApplicationController
   require 'faraday_middleware/aws_sigv4'
   require 'amazing_print'
 
-  AWS_REGION = 'us-east-1'
-  API_ID     = '9ucus3fwwj'
-  ws_url     = "wss://#{API_ID}.execute-api.#{AWS_REGION}.amazonaws.com/test"
-  #             wss://9ucus3fwwj.execute-api.us-east-1.amazonaws.com/test
-  app_url    = 'https://console.aws.amazon.com/cloud9/ide/066180cd4f524733bb998679cfa1e14a'
+  @aws_region = 'us-east-1'
+  @api_id     = '9ucus3fwwj'
+  @ws_url     = "wss://#{@api_id}.execute-api.#{@aws_region}.amazonaws.com/test"
+  #              wss://9ucus3fwwj.execute-api.us-east-1.amazonaws.com/test
+  @app_url    = 'https://console.aws.amazon.com/cloud9/ide/066180cd4f524733bb998679cfa1e14a'
   hit_count  = 0
 
   AWS_ID  = ENV['AWS_ACCESS_KEY_ID']
@@ -18,8 +18,14 @@ class WebsocketController < ApplicationController
 
 
   def index
-    @aws_id_msg   = "Env variable AWS_ACCESS_KEY_ID #{AWS_ID.present?}"
-    @aws_key_msg = "Env variable AWS_SECRET_ACCESS_KEY #{AWS_KEY.present?}"
+    check_env
+  end
+
+  private
+
+  def check_env
+    @aws_id_msg  = "AWS_ACCESS_KEY_ID ---> #{AWS_ID ? 'Available' : 'Missing'}"
+    @aws_key_msg = "AWS_SECRET_ACCESS_KEY --->  #{AWS_KEY ? 'Available' : 'Missing'}"
   end
 end
 
