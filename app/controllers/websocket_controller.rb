@@ -10,15 +10,16 @@ class WebsocketController < ApplicationController
   app_url    = 'https://console.aws.amazon.com/cloud9/ide/066180cd4f524733bb998679cfa1e14a'
   hit_count  = 0
 
-  ENV['AWS_ACCESS_KEY_ID']     || (puts('No env var AWS_ACCESS_KEY_ID'); exit)
-  ENV['AWS_SECRET_ACCESS_KEY'] || (puts('No env var AWS_SECRET_ACCESS_KEY'); exit)
+  AWS_ID  = ENV['AWS_ACCESS_KEY_ID']
+  AWS_KEY = ENV['AWS_SECRET_ACCESS_KEY']
 
   RANDYS_IP = '136.55.5.229'
   RANDYS_WEBSOCKET_ADDRESS_PREFIX = '3.216'
 
 
   def index
-
+    @aws_id_msg   = "Env variable AWS_ACCESS_KEY_ID #{AWS_ID.present?}"
+    @aws_key_msg = "Env variable AWS_SECRET_ACCESS_KEY #{AWS_KEY.present?}"
   end
 end
 
