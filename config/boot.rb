@@ -7,7 +7,9 @@ require 'rails/commands/server'
 module Rails
   class Server
     def default_options
-      super.merge(Host:  '0.0.0.0', Port: 3000)
+      # Requests to randy-parker.kipu.dev on AWS
+      # will get a "502 Bad Gateway" on 8080.
+      super.merge(Host:  '0.0.0.0', Port: 8081)
     end
   end
 end

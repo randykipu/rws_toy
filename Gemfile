@@ -14,6 +14,11 @@ gem 'faraday_middleware-aws-sigv4'
 gem 'amazing_print'
 gem 'haml'
 
+# Simply adding the 'thin' gem doesn't work because of a C99 compilation error.
+# So install it manually, like this:
+# bundle config build.thin --with-cflags="-Wno-error=implicit-function-declaration"
+gem 'websocket-rails'
+
 group :development, :test do
   gem 'byebug'
 end
