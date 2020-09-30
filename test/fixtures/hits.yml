@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  method: MyString
+  count: 1
+  origin: MyString
+  payload: MyString
+
+two:
+  method: MyString
+  count: 1
+  origin: MyString
+  payload: MyString

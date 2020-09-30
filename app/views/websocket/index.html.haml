@@ -1,5 +1,12 @@
 %h2
-  Rails websocket toy got an http request to /websocket
+  Rails_websocket_toy got an http request to the /websocket page
+
+%p
+  Hit #
+  %b= @hit.count
+  from:
+  = @hit.origin
+  = @hit.method
 
 %ul
   %li= @aws_id_msg

@@ -18,6 +18,13 @@ class WebsocketController < ApplicationController
 
 
   def index
+    method_str  = "#{request.env['REQUEST_METHOD']} #{request.env['rack.url_scheme']}"
+    payload_str =  request.env['QUERY_STRING']
+    cnt  = Hit.count
+    @hit = Hit.new(count: cnt, method: method_str, origin: request.ip, payload: payload_str)
+    @hit.save!
+    #puts "#{'==='*12} hit cnt: #{@cnt}"
+    #ap request.env
     check_env
   end
 
