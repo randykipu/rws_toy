@@ -1,4 +1,4 @@
-class QueueController < ApplicationController
+class TaskController < ApplicationController
 
   require 'faraday_middleware/aws_sigv4'
   require 'amazing_print'
@@ -23,8 +23,10 @@ class QueueController < ApplicationController
     cnt  = Hit.count
     @hit = Hit.new(count: cnt, method: method_str, origin: request.ip, payload: payload_str)
     @hit.save!
-    #puts "#{'==='*12} hit cnt: #{@cnt}"
-    #ap request.env
+    @tasks = Task.all
+    @task_a = Task.where(name: 'A').first
+    @task_b = Task.where(name: 'B').first
+    @task_c = Task.where(name: 'C').first
     check_env
   end
 

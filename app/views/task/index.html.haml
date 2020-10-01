@@ -1,0 +1,16 @@
+%h2
+  Rails_websocket_toy got an http request to the /task page
+
+%p
+  Hit #
+  %b= @hit.count
+  from:
+  = @hit.origin
+  = @hit.method
+
+%ul
+  %li= @aws_id_msg
+  %li= @aws_key_msg
+
+.row
+  = render partial: 'task', collection: @tasks

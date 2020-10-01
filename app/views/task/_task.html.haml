@@ -1,0 +1,7 @@
+.column{id: task.name}
+  %h3= task.name
+  %hr
+  %p
+    %ul
+      - task.users.each do |usr|
+        %li= usr.name

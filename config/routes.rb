@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
 
   root 'welcome#index'
-  get 'queue', to: 'queue#index'
+  get 'tasks', to: 'task#index'
 end
